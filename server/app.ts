@@ -19,7 +19,6 @@ import {
 } from "./auth/session.js"
 
 import { hasPermission } from "./permissions/permissions.js"
-import { env } from "./config.js"
 import { getMongoDb } from "../src/lib/mongodb.js"
 import { GridFSBucket, ObjectId } from "mongodb"
 import { randomUUID } from "node:crypto"
