@@ -5921,10 +5921,10 @@ export function createApp() {
 const app = createApp()
 
 if (process.env.VERCEL !== "1") {
-  app.listen(env.port, () => {
-    console.log(
-      `MPD API running on http://localhost:${env.port}`,
-    )
+  const port = Number(process.env.PORT ?? 3001)
+
+  app.listen(port, () => {
+    console.log(`MPD API listening on http://localhost:${port}`)
   })
 }
 
