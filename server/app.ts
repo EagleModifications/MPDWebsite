@@ -501,12 +501,11 @@ async function storeGalleryFile(
     bucket.openUploadStream(
       filename,
       {
-        contentType:
-          file.mimetype,
         metadata: {
           originalName:
             filename,
           mediaType: type,
+          contentType: file.mimetype,
         },
       },
     )
@@ -1572,16 +1571,6 @@ async function readRosterImport(
           )
         : [],
   }
-}
-
-async function readActivityRoster(
-  userId: string,
-  division: ImportDivision,
-): Promise<RosterImport> {
-  return readRosterImport(
-    userId,
-    division,
-  )
 }
 
 /* ─────────────────────────────────────────────
@@ -5298,7 +5287,7 @@ export function createApp() {
 
         res.setHeader(
           "Content-Type",
-          file.contentType ||
+          (file.metadata as { contentType?: string } | undefined)?.contentType ||
             "application/octet-stream",
         )
 
