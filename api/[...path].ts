@@ -3,7 +3,7 @@ import type {
   VercelResponse,
 } from "@vercel/node"
 
-import app from "../server/app"
+import app from "../server/app.js"
 
 export default function handler(
   req: VercelRequest,

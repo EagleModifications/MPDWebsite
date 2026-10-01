@@ -4,23 +4,23 @@ import multer from "multer"
 import path from "node:path"
 import XLSX from "xlsx"
 
-import { syncGoogleRosters } from "./googleRosterSync"
+import { syncGoogleRosters } from "./googleRosterSync.js"
 
 import {
   authenticateDiscordCode,
   getDiscordLoginUrl,
-} from "./auth/service"
+} from "./auth/service.js"
 
 import {
   clearSessionCookie,
   createSession,
   getRequestUser,
   setSessionCookie,
-} from "./auth/session"
+} from "./auth/session.js"
 
-import { hasPermission } from "./permissions/permissions"
-import { env } from "./config"
-import { getMongoDb } from "../src/lib/mongodb"
+import { hasPermission } from "./permissions/permissions.js"
+import { env } from "./config.js"
+import { getMongoDb } from "../src/lib/mongodb.js"
 import { GridFSBucket, ObjectId } from "mongodb"
 import { randomUUID } from "node:crypto"
 

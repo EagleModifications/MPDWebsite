@@ -1,5 +1,5 @@
-import { getRosterRows } from "../google/sheets"
-import type { RosterUser } from "../types"
+import { getRosterRows } from "../google/sheets.js"
+import type { RosterUser } from "../types.js"
 
 function clean(value: unknown): string {
   return String(value ?? "").trim()

@@ -1,6 +1,6 @@
 import { google } from "googleapis"
 
-import { getMongoDb } from "../src/lib/mongodb"
+import { getMongoDb } from "../src/lib/mongodb.js"
 
 type DivisionConfig = {
   id: string

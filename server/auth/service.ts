@@ -1,7 +1,7 @@
-import { getDiscordLoginUrl, exchangeDiscordCode, getDiscordUser } from "./discord"
-import { findRosterUser } from "./roster"
-import { buildAuthUser } from "../permissions/permissions"
-import type { AuthUser } from "../types"
+import { getDiscordLoginUrl, exchangeDiscordCode, getDiscordUser } from "./discord.js"
+import { findRosterUser } from "./roster.js"
+import { buildAuthUser } from "../permissions/permissions.js"
+import type { AuthUser } from "../types.js"
 
 export { getDiscordLoginUrl }
 

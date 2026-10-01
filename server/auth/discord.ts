@@ -1,5 +1,5 @@
-import type { DiscordUser } from "../types"
-import { env } from "../config"
+import type { DiscordUser } from "../types.js"
+import { env } from "../config.js"
 
 export function getDiscordLoginUrl(): string {
   const params = new URLSearchParams({

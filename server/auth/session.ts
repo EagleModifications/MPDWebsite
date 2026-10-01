@@ -1,7 +1,7 @@
 import { SignJWT, jwtVerify } from "jose"
 import type { Response, Request } from "express"
-import type { AuthUser } from "../types"
-import { env } from "../config"
+import type { AuthUser } from "../types.js"
+import { env } from "../config.js"
 
 const COOKIE_NAME = "mpd_session"
 const secret = new TextEncoder().encode(env.sessionSecret)

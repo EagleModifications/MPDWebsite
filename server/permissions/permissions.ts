@@ -1,6 +1,6 @@
 import fs from "node:fs"
 import path from "node:path"
-import type { AuthUser } from "../types"
+import type { AuthUser } from "../types.js"
 
 type RankPermissions = Record<string, string[]>
 
