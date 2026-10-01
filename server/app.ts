@@ -4895,16 +4895,10 @@ app.get("/api/health", (_req, res) => {
      Events
   ───────────────────────────────────────── */
 
-  app.get("/api/events", async (req, res) => {
+  // Public read endpoint. Guests can view events without signing in.
+  // Create/update/delete remain protected below.
+  app.get("/api/events", async (_req, res) => {
     try {
-      const user = await getRequestUser(req)
-
-      if (!user) {
-        return res.status(401).json({
-          error: "Not authenticated",
-        })
-      }
-
       const events = await getCollection<EventDocument>("events")
 
       const results = await events
@@ -5119,22 +5113,11 @@ app.get("/api/health", (_req, res) => {
      Gallery
   ───────────────────────────────────────── */
 
-  app.get("/api/gallery", async (req, res) => {
+  // Public read endpoint. Guests can view the gallery without signing in.
+  // Upload/update/delete remain protected below.
+  app.get("/api/gallery", async (_req, res) => {
     try {
-      const user =
-        await getRequestUser(req)
-
-      if (!user) {
-        return res.status(401).json({
-          success: false,
-          error: "Not authenticated",
-        })
-      }
-
-      const gallery =
-        await getCollection<GalleryDocument>(
-          "gallery",
-        )
+      const gallery = await getCollection<GalleryDocument>("gallery")
 
       const results = await gallery
         .find({})
@@ -5143,15 +5126,10 @@ app.get("/api/health", (_req, res) => {
 
       return res.json({
         success: true,
-        items: results.map(
-          serializeGalleryItem,
-        ),
+        items: results.map(serializeGalleryItem),
       })
     } catch (error) {
-      console.error(
-        "GET /api/gallery failed:",
-        error,
-      )
+      console.error("GET /api/gallery failed:", error)
 
       return res.status(500).json({
         success: false,
