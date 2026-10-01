@@ -3759,6 +3759,21 @@ export function createApp() {
   app.use(express.json())
   app.use(cookieParser())
 
+/* ─────────────────────────────────────────────
+   Vercel / API Health Check
+───────────────────────────────────────────── */
+
+app.get("/api/health", (_req, res) => {
+  res.setHeader("Cache-Control", "no-store")
+
+  return res.status(200).json({
+    success: true,
+    service: "mpd-api",
+    vercel: process.env.VERCEL === "1",
+    nodeEnv: process.env.NODE_ENV ?? "development",
+  })
+})
+
   /* ─────────────────────────────────────────
      Authentication
   ───────────────────────────────────────── */
@@ -5918,6 +5933,11 @@ export function createApp() {
 ───────────────────────────────────────────── */
 
 const app = createApp()
+
+console.log("[MPD API] Express app initialized", {
+  vercel: process.env.VERCEL === "1",
+  nodeEnv: process.env.NODE_ENV ?? "development",
+})
 
 if (process.env.VERCEL !== "1") {
   const port = Number(process.env.PORT ?? 3001)
